@@ -1,0 +1,29 @@
+{
+    "name": "yxx/laravel-alpine-components",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Yxx\\LaravelAlpineComponents\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "youyingxiang",
+            "email": "1365831278@qq.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "laravel/framework": "^8.0|^9.0|^10.0",
+        "ext-zip": "*",
+        "spatie/laravel-enum": "^2.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yxx\\LaravelAlpineComponents\\Providers\\LaravelAlpineComponentServiceProvider"
+            ]
+        }
+    }
+}
