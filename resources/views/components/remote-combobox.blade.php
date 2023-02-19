@@ -1,12 +1,29 @@
 <div x-data="{
-    expanded: false,
-    minIptLength: {{ intval($minIptLength ?? 0) }},
-    options: {{ $options ?? '[]' }},
-    filteredOptions: [],
+    expanded:false,
+    minIptLength:{{ intval($minIptLength ?? 0) }},
+    loading:false,
+    filteredOptions:[],
+    selectedOption:null,
     iptValue: '',
+    pagination: {
+        page: {{ intval($page ?? 1) }},
+        more:true,
+        perPage: {{ $perPage ?? 15 }}
+    },
     get shouldIptLength() {
         const shouldIptLength = this.minIptLength - this.iptValue.length ?? 0;
-        return shouldIptLength > 0 ? shouldIptLength : 0
+        return shouldIptLength > 0 ? shouldIptLength :  0
+    },
+    onClick(e) {
+        this.iptValue = e.target.value;
+        this.expanded = true;
+    },
+    onInput(e) {
+        this.iptValue = e.target.value;
+        this.expanded = true;
+        this.resetPagination();
+        this.resetSelectedOption()
+        this.resetFilteredOptions();
     },
     close(focusAfter) {
         this.expanded = false
@@ -17,21 +34,16 @@
         this.selectedOption = option
         this.close($refs.comboboxIpt)
     },
-    onClick(e) {
-        this.iptValue = e.target.value;
-        this.expanded = true;
-        if(this.iptValue.length === 0) {
-            this.filteredOptions = this.options;
-        }
+    resetPagination() {
+        this.pagination.page = 1;
+        this.pagination.more = true;
     },
-    onInput(e) {
-        this.iptValue = e.target.value;
-        this.expanded = true;
-        this.resetFilteredOptions()
+    resetSelectedOption() {
+        this.selectedOption = null
     },
     resetFilteredOptions() {
         this.filteredOptions = [];
-    }
+    },
 }" {{ $attributes->filter(fn ($value, $key) => ! in_array($key, ['minIptLength','options'])) }}>
     <div>
         @if(!empty($label))
@@ -52,9 +64,14 @@
                     <template x-if="shouldIptLength <= 0 && filteredOptions.length > 0">
                         {{ $content }}
                     </template>
-                    <template x-if="shouldIptLength <= 0 && filteredOptions.length === 0">
+                    <template x-if="shouldIptLength <= 0 && filteredOptions.length === 0 && !loading">
                         <li {{ $help->attributes }}>
                             No results found
+                        </li>
+                    </template>
+                    <template x-if="shouldIptLength <= 0 && loading">
+                        <li {{ $help->attributes }}>
+                            Loading data ...
                         </li>
                     </template>
                 </ul>

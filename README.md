@@ -5,13 +5,13 @@ This is about laravel blade and alpinejs related components
 
 ## Function
 - [x] combobox
-- [ ] remote-combobox
+- [x] remote-combobox
 - [ ] select
 - [ ] data-time
 - [ ] modal
 - [ ] dropdown
 
-## Install
+## Installation
 
 ``` 
 composer require yxx/laravel-alpine-components

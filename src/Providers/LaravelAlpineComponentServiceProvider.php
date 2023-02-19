@@ -21,6 +21,7 @@ class LaravelAlpineComponentServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'alp');
         Blade::component('alp::components.combobox', 'alp-combobox');
+        Blade::component('alp::components.remote-combobox', 'alp-remote-combobox');
     }
 
     public function registerRoute()

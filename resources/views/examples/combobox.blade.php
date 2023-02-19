@@ -19,6 +19,9 @@
                 @click="onClick"
                 @input="(e) => {
                     onInput(e);
+                    if (shouldIptLength > 0) {
+                        return;
+                    }
                     filteredOptions = iptValue === '' ? options: options.filter((option) => option.name.toLowerCase().includes(iptValue.toLowerCase()))
                 }"
                 type="text"
@@ -32,10 +35,15 @@
             <x-slot:ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" id="options" role="listbox">
                 <x-slot:content>
                     <template x-for="option in filteredOptions" :key="option.id">
-                        <li @click="(e)=> {
-                            onSelected(option.name);
-                        }"  class="group text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9 hover:text-white hover:bg-gray-700">
+                        <li @click="onSelected(option.name, option)"  class="group text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9 hover:text-white hover:bg-gray-700">
                             <span class="block truncate" x-text="option.name"></span>
+                            <template x-if="iptValue === option.name">
+                                <span class="text-gray-700 absolute inset-y-0 right-0 flex items-center pr-4 group-hover:text-white">
+                                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                            </template>
                         </li>
                     </template>
                 </x-slot:content>
