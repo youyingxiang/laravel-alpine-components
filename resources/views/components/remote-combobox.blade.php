@@ -49,7 +49,7 @@
         @if(!empty($label))
             <label {{ $label->attributes }}>{{ $label }}</label>
         @endif
-        <div x-on:click.outside="expanded = false" {{ $combobox->attributes }}>
+        <div x-on:click.outside="expanded = false" {{ $div->attributes }}>
             <input {{ $input->attributes }} x-ref="comboboxIpt" x-bind:value="iptValue"/>
             <button {{ $button->attributes }}>
                 {{ $button }}

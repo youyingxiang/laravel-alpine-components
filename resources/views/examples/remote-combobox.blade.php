@@ -2,7 +2,7 @@
 @section('content')
     <x-alp-remote-combobox class="w-96" minIptLength="4" perPage="10">
         <x-slot:label class="block text-sm font-medium text-gray-700">Load data through api</x-slot:label>
-        <x-slot:combobox class="relative mt-1">
+        <x-slot:div class="relative mt-1">
             <x-slot:input
                 type="text"
                 class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-12 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
@@ -80,6 +80,6 @@
                 </x-slot:content>
                 <x-slot:help class="relative cursor-default select-none py-2 pl-3 pr-9 text-sm text-gray-500"></x-slot:help>
             </x-slot:ul>
-        </x-slot:combobox>
+        </x-slot:div>
     </x-alp-remote-combobox>
 @endsection

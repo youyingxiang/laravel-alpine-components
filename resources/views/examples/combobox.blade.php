@@ -14,7 +14,7 @@
     @endphp
     <x-alp-combobox class="w-96" minIptLength="2" options="{!! json_encode($options) !!}">
         <x-slot:label class="block text-sm font-medium text-gray-700">State federal district or territory</x-slot:label>
-        <x-slot:combobox class="relative mt-1">
+        <x-slot:div class="relative mt-1">
             <x-slot:input
                 @click="onClick"
                 @input="(e) => {
@@ -49,6 +49,6 @@
                 </x-slot:content>
                 <x-slot:help class="relative cursor-default select-none py-2 pl-3 pr-9 text-sm text-gray-500"></x-slot:help>
             </x-slot:ul>
-        </x-slot:combobox>
+        </x-slot:div>
     </x-alp-combobox>
 @endsection

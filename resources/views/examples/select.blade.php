@@ -1,31 +1,5 @@
-<h2 align="center">Laravel-Alpine-Components</h2>
-
-## About
-This is about laravel blade and alpinejs related components
-
-## Function
-- [x] combobox
-- [x] remote-combobox
-- [x] select
-
-## Installation
-
-``` 
-composer require yxx/laravel-alpine-components
-```
-
-## View Local Example
-
-- Execute:
-``` 
-php artisan vendor:publish --provider="Yxx\LaravelAlpineComponents\Providers\LaravelAlpineComponentServiceProvider
-```
-
-- Accessed at the `{your domain}/alp-examples/` route.
-
-## Code example
-
-```php
+@extends('alp::examples.layout')
+@section('content')
     @php
         $options = [
             ["id" => 1, "name" => 'Alabama'],
@@ -67,6 +41,4 @@ php artisan vendor:publish --provider="Yxx\LaravelAlpineComponents\Providers\Lar
             </x-slot:ul>
         </x-slot:div>
     </x-alp-select>
-```
-
-
+@endsection

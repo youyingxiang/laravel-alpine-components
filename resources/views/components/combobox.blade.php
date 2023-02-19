@@ -3,6 +3,7 @@
     minIptLength: {{ intval($minIptLength ?? 0) }},
     options: {{ $options ?? '[]' }},
     filteredOptions: [],
+    selectedOption:null,
     iptValue: '',
     get shouldIptLength() {
         const shouldIptLength = this.minIptLength - this.iptValue.length ?? 0;
@@ -27,7 +28,11 @@
     onInput(e) {
         this.iptValue = e.target.value;
         this.expanded = true;
+        this.resetSelectedOption()
         this.resetFilteredOptions()
+    },
+    resetSelectedOption() {
+        this.selectedOption = null
     },
     resetFilteredOptions() {
         this.filteredOptions = [];
@@ -37,7 +42,7 @@
         @if(!empty($label))
             <label {{ $label->attributes }}>{{ $label }}</label>
         @endif
-        <div x-on:click.outside="expanded = false" {{ $combobox->attributes }}>
+        <div x-on:click.outside="expanded = false" {{ $div->attributes }}>
             <input {{ $input->attributes }} x-ref="comboboxIpt" x-bind:value="iptValue"/>
             <button {{ $button->attributes }}>
                 {{ $button }}
