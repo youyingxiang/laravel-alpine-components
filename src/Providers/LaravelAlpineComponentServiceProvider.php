@@ -8,7 +8,9 @@ class LaravelAlpineComponentServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->registerRoute();
+        if ($this->app->isLocal()) {
+            $this->registerRoute();
+        }
     }
 
     public function boot()

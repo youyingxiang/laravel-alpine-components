@@ -44,7 +44,7 @@
     resetFilteredOptions() {
         this.filteredOptions = [];
     },
-}" {{ $attributes->filter(fn ($value, $key) => ! in_array($key, ['minIptLength','options'])) }}>
+}" {{ $attributes->filter(fn ($value, $key) => ! in_array($key, ['minIptLength','page', 'perPage'])) }}>
     <div>
         @if(!empty($label))
             <label {{ $label->attributes }}>{{ $label }}</label>
