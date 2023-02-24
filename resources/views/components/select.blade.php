@@ -1,6 +1,6 @@
 <div x-data="{
     expanded: false,
-    selectedOption:{{ $defaultOption ?? '' }},
+    selectedOption:@if($defaultOption) {{ $defaultOption }} @else null @endif,
     options: {{ $options ?? '[]' }},
     close() {
         this.expanded = false
